@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker build --tag=makerspace/makerspace-mediawiki:1.26.2 .
