@@ -6,7 +6,7 @@ ENV MEDIAWIKI_VERSION_MINOR 2
 
 # Install PHP5 and a few extensions
 RUN apt-get update -y \
-	&& apt-get install -y --no-install-recommends php5-fpm php5-intl php-apc php5-gd php5-intl php5-mysqlnd php5-curl php-pear php5-cli imagemagick\
+	&& apt-get install -y --no-install-recommends php5-fpm php5-intl php-apc php5-gd php5-intl php5-mysqlnd php5-curl php-pear php5-cli imagemagick php-pear\
 	&& rm -rf /var/lib/apt/lists/*
 
 # Change default user in nginx
