@@ -59,7 +59,6 @@ RUN apt-key advanced --keyserver keys.gnupg.net --recv-keys 664C383A3566A3481B94
 ADD parsoid-settings.js /etc/mediawiki/parsoid/settings.js
 ADD nginx-default.conf /etc/nginx/conf.d/default.conf
 ADD php5-fpm-www.conf /etc/php5/fpm/pool.d/www.conf
-ADD LocalSettings.php /usr/src/mediawiki/
 
 # Start the container
 CMD service php5-fpm start \
