@@ -9,6 +9,8 @@ RUN apt-get update -y \
 	&& apt-get install -y --no-install-recommends php5-fpm php5-intl php-apc php5-gd php5-intl php5-mysqlnd php5-curl php-pear php5-cli imagemagick php-pear\
 	&& rm -rf /var/lib/apt/lists/*
 
+RUN pear install mail net_smtp
+
 # Change default user in nginx
 RUN sed -i 's/user  nginx/user  www-data/g' /etc/nginx/nginx.conf
 
