@@ -1,0 +1,4 @@
+.env
+data/images
+!data/images/.gitkeep
+
