@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Malafaya",
+			"Vitorvicentevalente"
+		]
+	},
+	"networkauth-desc": "Permite-lhe autenticar utilizadores provenientes de determinados endereços de rede"
+}

@@ -1,0 +1,15 @@
+worker_heartbeat_timeout: 300000
+
+num_workers: $PARSOID_WORKERS
+
+logging:
+    level: info
+
+services:
+  - module: lib/index.js
+    entrypoint: apiServiceWorker
+    conf:
+        mwApis:
+        - uri: 'http://localhost/api.php'
+          domain: 'localhost'
+        serverPort: 8142

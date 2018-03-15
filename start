@@ -1,0 +1,3 @@
+docker-compose create
+docker network connect mysql wiki.makerspace.se
+docker-compose start

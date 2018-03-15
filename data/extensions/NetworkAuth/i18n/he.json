@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rotemliss",
+			"YaronSh",
+			"Guycn2"
+		]
+	},
+	"networkauth-desc": "אפשרות לאמת משתמשים מסוימים באופן אוטומטי לפי נתוני הרשת שלהם"
+}
