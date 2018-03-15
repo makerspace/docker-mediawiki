@@ -48,10 +48,17 @@ wfLoadSkin( 'MinervaNeue' );
 $wgMFDefaultSkinClass = 'SkinMinerva'; // use Minerva skin
 
 if (getenv('NETWORKAUTH_IPRANGE') != '') {
-require_once "$IP/extensions/NetworkAuth/NetworkAuth.php";
-$wgNetworkAuthUsers[] = [
+	require_once "$IP/extensions/NetworkAuth/NetworkAuth.php";
+	$wgNetworkAuthUsers[] = [
 	'iprange' => [ getenv('NETWORKAUTH_IPRANGE') ],
 	'user'    => 'MakerspaceUser',
-];
-$wgNetworkAuthSpecialUsers[] = 'MakerspaceUser';
+	];
+	$wgNetworkAuthSpecialUsers[] = 'MakerspaceUser';
+}
+
+if (getenv('RECAPTCHA_SITE_KEY') != '') {
+	wfLoadExtensions([ 'ConfirmEdit', 'ConfirmEdit/ReCaptchaNoCaptcha' ]);
+	$wgCaptchaClass = 'ReCaptchaNoCaptcha';
+	$wgReCaptchaSiteKey = getenv('RECAPTCHA_SITE_KEY');
+	$wgReCaptchaSecretKey = getenv('RECAPTCHA_SECRET_KEY');
 }

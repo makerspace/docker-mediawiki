@@ -43,7 +43,9 @@ services:
       VIRTUAL_HOST: wiki.makerspace.se
       LETSENCRYPT_HOST: wiki.makerspace.se
       LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
-      NETWORKAUTH_IPRANGE: ${NETWORKAUTH_IPRANGE}}
+      NETWORKAUTH_IPRANGE: ${NETWORKAUTH_IPRANGE}
+      RECAPTCHA_SITE_KEY: ${RECAPTCHA_SITE_KEY}
+      RECAPTCHA_PUBLIC_KEY: ${RECAPTCHA_PUBLIC_KEY}
 
     volumes:
     - ./data/images:/images
@@ -52,6 +54,7 @@ services:
     - ./data/extensions/MobileFrontend:/var/www/mediawiki/extensions/MobileFrontend:ro
     - ./data/extensions/NetworkAuth:/var/www/mediawiki/extensions/NetworkAuth:ro
     - ./data/skins/MinervaNeue:/var/www/mediawiki/skins/MinervaNeue:ro
+    - ./data/extensions/ConfirmEdit:/var/www/mediawiki/extensions/ConfirmEdit:ro
 
     network_mode: bridge
      
