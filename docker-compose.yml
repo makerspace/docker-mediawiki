@@ -6,8 +6,8 @@ services:
     image: makerspace/makerspace-mediawiki:1.30.0
     container_name: wiki.makerspace.se
     environment:
-      MEDIAWIKI_HTTPS: 1
-      MEDIAWIKI_SERVER: https://wiki.makerspace.se
+      MEDIAWIKI_HTTPS: ${USE_HTTPS}
+      MEDIAWIKI_SERVER: ${WIKI_HOST}
       MEDIAWIKI_SITENAME: Stockholm Makerspace Wiki
       MEDIAWIKI_LANGUAGE_CODE: sv
       MEDIAWIKI_SECRET_KEY: ${SECRET_KEY}
@@ -40,21 +40,24 @@ services:
       PHPFPM_WORKERS_MIN: 1
       PHPFPM_WORKERS_MAX: 20
       PARSOID_WORKERS: 1
-      VIRTUAL_HOST: wiki.makerspace.se
+      VIRTUAL_HOST:   wiki.makerspace.se
       LETSENCRYPT_HOST: wiki.makerspace.se
       LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
       NETWORKAUTH_IPRANGE: ${NETWORKAUTH_IPRANGE}
+      NETWORKAUTH_USER: ${NETWORKAUTH_USER}
       RECAPTCHA_SITE_KEY: ${RECAPTCHA_SITE_KEY}
-      RECAPTCHA_PUBLIC_KEY: ${RECAPTCHA_PUBLIC_KEY}
+      RECAPTCHA_SECRET_KEY: ${RECAPTCHA_SECRET_KEY}
 
     volumes:
-    - ./data/images:/images
-    - ./data/makerspace_logo.png:/var/www/mediawiki/resources/assets/wiki.png:ro
-    - ./data/ExtraLocalSettings.php:/var/www/mediawiki/ExtraLocalSettings.php:ro
-    - ./data/extensions/MobileFrontend:/var/www/mediawiki/extensions/MobileFrontend:ro
-    - ./data/extensions/NetworkAuth:/var/www/mediawiki/extensions/NetworkAuth:ro
-    - ./data/skins/MinervaNeue:/var/www/mediawiki/skins/MinervaNeue:ro
-    - ./data/extensions/ConfirmEdit:/var/www/mediawiki/extensions/ConfirmEdit:ro
+      - ./data/images:/images
+      - ./data/makerspace_logo.png:/var/www/mediawiki/resources/assets/wiki.png:ro
+      - ./data/ExtraLocalSettings.php:/var/www/mediawiki/ExtraLocalSettings.php:ro
+      - ./data/extensions/MobileFrontend:/var/www/mediawiki/extensions/MobileFrontend:ro
+      - ./data/extensions/NetworkAuth:/var/www/mediawiki/extensions/NetworkAuth:ro
+      - ./data/skins/MinervaNeue:/var/www/mediawiki/skins/MinervaNeue:ro
+      - ./data/extensions/ConfirmEdit:/var/www/mediawiki/extensions/ConfirmEdit:ro
+    
+    network_mode: "bridge"
 
-    network_mode: bridge
-     
+    ports:
+      - "80:80"

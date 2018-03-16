@@ -30,11 +30,8 @@ $wgGroupPermissions['*']['read'] = true;
 ## Uncomment this to disable output compression
 # $wgDisableOutputCompression = true;
 
-// OPTIONAL: Enable VisualEditor's experimental code features
-#$wgDefaultUserOptions['visualeditor-enable-experimental'] = 1;
-$wgShowExceptionDetails = true;
-#$wgMFDefaultSkinClass = 'SkinVector'; // use Vector skin
-$wgMFAutodetectMobileView = true;
+$wgGenerateThumbnailOnParse = true;
+wfLoadSkin( 'MinervaNeue' );
 
 
 // ENABLE for debugging
@@ -43,17 +40,16 @@ $wgMFAutodetectMobileView = true;
 #$wgShowSQLErrors = true;
 
 wfLoadExtension('MobileFrontend');
-$wgGenerateThumbnailOnParse = true;
-wfLoadSkin( 'MinervaNeue' );
+$wgMFAutodetectMobileView = true;
 $wgMFDefaultSkinClass = 'SkinMinerva'; // use Minerva skin
 
 if (getenv('NETWORKAUTH_IPRANGE') != '') {
 	require_once "$IP/extensions/NetworkAuth/NetworkAuth.php";
 	$wgNetworkAuthUsers[] = [
 	'iprange' => [ getenv('NETWORKAUTH_IPRANGE') ],
-	'user'    => 'MakerspaceUser',
+	'user'    => getenv('NETWORKAUTH_USER'),
 	];
-	$wgNetworkAuthSpecialUsers[] = 'MakerspaceUser';
+	$wgNetworkAuthSpecialUsers[] = getenv('NETWORKAUTH_USER');
 }
 
 if (getenv('RECAPTCHA_SITE_KEY') != '') {
