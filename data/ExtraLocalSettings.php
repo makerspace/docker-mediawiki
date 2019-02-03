@@ -58,3 +58,7 @@ if (getenv('RECAPTCHA_SITE_KEY') != '') {
 	$wgReCaptchaSiteKey = getenv('RECAPTCHA_SITE_KEY');
 	$wgReCaptchaSecretKey = getenv('RECAPTCHA_SECRET_KEY');
 }
+
+$wgUsePrivateIPs = true;
+$wgSquidServersNoPurge = array('172.17.0.4');
+
