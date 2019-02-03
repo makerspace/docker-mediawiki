@@ -6,7 +6,7 @@ RUN usermod -u 999 www-data && \
 
 # Utilities
 RUN apt-get update && \
-    apt-get -y install apt-transport-https ca-certificates git curl --no-install-recommends && \
+    apt-get -y install apt-transport-https ca-certificates git curl nano --no-install-recommends && \
     rm -r /var/lib/apt/lists/*
 
 # MySQL PHP extension
@@ -57,7 +57,7 @@ COPY config/supervisor/supervisord.conf /etc/supervisor/conf.d/
 COPY config/supervisor/kill_supervisor.py /usr/bin/
 
 # NodeJS
-RUN curl -sL https://deb.nodesource.com/setup_4.x | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
     apt-get install -y nodejs --no-install-recommends
 
 # Parsoid
