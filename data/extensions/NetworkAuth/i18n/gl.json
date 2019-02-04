@@ -1,9 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Toliño",
-			"Elisardojm"
-		]
-	},
-	"networkauth-desc": "Permite autenticar automaticamente a usuarios procedentes de certas direccións de rede"
-}

@@ -1,8 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Jon Harald Søby"
-		]
-	},
-	"networkauth-desc": "Muliggjør automatisk autentisering av brukere som kommer fra visse nettverksadresser"
-}

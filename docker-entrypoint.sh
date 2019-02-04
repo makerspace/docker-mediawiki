@@ -20,10 +20,10 @@ PARSOID_WORKERS=${PARSOID_WORKERS:=1}
 sed -i "s/\$PARSOID_WORKERS/$PARSOID_WORKERS/g" /usr/lib/parsoid/src/config.yaml
 
 # Disable SSL peer verification in PEAR mail class to support self signed certs
-MEDIAWIKI_SMTP_SSL_VERIFY_PEER=${MEDIAWIKI_SMTP_SSL_VERIFY_PEER:=0}
-if [ ${MEDIAWIKI_SMTP_SSL_VERIFY_PEER} == 0 ]; then
-    sed -i "s/if (isset(\$params\['socket_options'\])) \$this->socket_options = \$params\['socket_options'\];/if (isset(\$params['socket_options'])) \$this->socket_options = \$params['socket_options'];\\n\$this->socket_options['ssl']['verify_peer'] = false;\\n\$this->socket_options['ssl']['verify_peer_name'] = false;/g" /usr/local/lib/php/Mail/smtp.php
-fi
+#MEDIAWIKI_SMTP_SSL_VERIFY_PEER=${MEDIAWIKI_SMTP_SSL_VERIFY_PEER:=0}
+#if [ ${MEDIAWIKI_SMTP_SSL_VERIFY_PEER} == 0 ]; then
+#    sed -i "s/if (isset(\$params\['socket_options'\])) \$this->socket_options = \$params\['socket_options'\];/if (isset(\$params['socket_options'])) \$this->socket_options = \$params['socket_options'];\\n\$this->socket_options['ssl']['verify_peer'] = false;\\n\$this->socket_options['ssl']['verify_peer_name'] = false;/g" /usr/local/lib/php/Mail/smtp.php
+#fi
 
 # Start supervisord
 /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf

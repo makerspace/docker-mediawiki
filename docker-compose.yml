@@ -3,7 +3,7 @@
 version: '3'
 services:
   wiki:
-    image: makerspace/makerspace-mediawiki:1.30.0
+    image: makerspace/makerspace-mediawiki:1.32.0
     container_name: wiki.makerspace.se
     environment:
       MEDIAWIKI_HTTPS: ${USE_HTTPS}
@@ -52,10 +52,6 @@ services:
       - ./data/images:/images
       - ./data/makerspace_logo.png:/var/www/mediawiki/resources/assets/wiki.png:ro
       - ./data/ExtraLocalSettings.php:/var/www/mediawiki/ExtraLocalSettings.php:ro
-      - ./data/extensions/MobileFrontend:/var/www/mediawiki/extensions/MobileFrontend:ro
-      - ./data/extensions/NetworkAuth:/var/www/mediawiki/extensions/NetworkAuth:ro
-      - ./data/skins/MinervaNeue:/var/www/mediawiki/skins/MinervaNeue:ro
-      - ./data/extensions/ConfirmEdit:/var/www/mediawiki/extensions/ConfirmEdit:ro
 
     network_mode: "bridge"
 

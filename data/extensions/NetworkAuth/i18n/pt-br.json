@@ -1,9 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Eduardo.mps",
-			"!Silent"
-		]
-	},
-	"networkauth-desc": "Permite-lhe autenticar usuários provenientes de certos endereços de rede"
-}

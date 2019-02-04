@@ -1,8 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Cedric31"
-		]
-	},
-	"networkauth-desc": "Permet d’autentificar automaticament los utilizaires, basat sus d'entresenhas en ret qu'arriban d'adreças ret especificas"
-}
