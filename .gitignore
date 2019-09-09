@@ -2,3 +2,4 @@
 data/images
 !data/images/.gitkeep
 *.save
+db_backup
