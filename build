@@ -7,4 +7,4 @@ docker build --tag=makerspace/makerspace-mediawiki:${MAJOR}.${MINOR}.${BUGFIX} \
     --build-arg MEDIAWIKI_VERSION_MAJOR=${MAJOR} \
     --build-arg MEDIAWIKI_VERSION_MINOR=${MINOR} \
     --build-arg MEDIAWIKI_VERSION_BUGFIX=${BUGFIX} \
-    .
+    docker
