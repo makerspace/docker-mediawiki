@@ -39,7 +39,7 @@ cd docker-mediawiki
 ./build
 ```
 
-This will create an image tagged makerspace/makerspace-mediawiki:1.32.0
+This will create an image tagged makerspace/makerspace-mediawiki:1.32.2
 
 
 **Setup environment**

@@ -55,7 +55,7 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
 
 # Parsoid
 RUN useradd parsoid --no-create-home --home-dir /usr/lib/parsoid --shell /usr/sbin/nologin
-RUN apt-key advanced --keyserver keys.gnupg.net --recv-keys 90E9F83F22250DD7 && \
+RUN apt-key advanced --keyserver keys.gnupg.net --recv-keys 0xAF380A3036A03444 && \
     echo "deb https://releases.wikimedia.org/debian jessie-mediawiki main" > /etc/apt/sources.list.d/parsoid.list && \
     apt-get update && \
     apt-get -y install parsoid --no-install-recommends
