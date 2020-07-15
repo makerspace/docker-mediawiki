@@ -5,6 +5,7 @@ services:
   wiki:
     image: makerspace/makerspace-mediawiki:1.32.2
     container_name: wiki.makerspace.se
+    restart: always
     environment:
       MEDIAWIKI_HTTPS: ${USE_HTTPS}
       MEDIAWIKI_SERVER: ${WIKI_HOST}
