@@ -1,3 +1,4 @@
+#!/bin/bash
 CURRENT_TIME=`date +%FT%T+%N`
 FILEPATH=/tmp/makerspace-wiki_${CURRENT_TIME}.sql
 EXPORT_PATH=backup/db
