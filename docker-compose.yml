@@ -3,7 +3,7 @@
 version: '3'
 services:
   wiki:
-    image: makerspace/makerspace-mediawiki:1.32.2
+    image: makerspace/makerspace-mediawiki:1.35.1
     container_name: wiki.makerspace.se
     restart: always
     environment:
