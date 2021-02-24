@@ -1,8 +1,6 @@
 <?php
 
 // @see https://www.mediawiki.org/wiki/Manual:Configuration_settings
-ini_set('memory_limit', '512M');
-$wgMemoryLimit = '512M';
 
 # Protect against web entry
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -31,8 +29,6 @@ $wgGroupPermissions['*']['read'] = true;
 
 ## Uncomment this to disable output compression
 # $wgDisableOutputCompression = true;
-
-$wgInvalidateCacheOnLocalSettingsChange = true;
 
 $wgGenerateThumbnailOnParse = true;
 wfLoadSkin( 'MinervaNeue' );

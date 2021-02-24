@@ -53,8 +53,6 @@ services:
       - ./data/images:/images
       - ./data/makerspace_logo.png:/var/www/mediawiki/resources/assets/wiki.png:ro
       - ./data/ExtraLocalSettings.php:/var/www/mediawiki/ExtraLocalSettings.php:ro
-      - ./data/LocalSettings.php:/var/www/mediawiki/LocalSettings.php:ro
-      - ./data/php.ini:/usr/local/etc/php/php.ini:ro
 
     network_mode: "bridge"
 
