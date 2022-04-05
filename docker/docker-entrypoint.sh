@@ -25,5 +25,11 @@ sed -i "s/\$PARSOID_WORKERS/$PARSOID_WORKERS/g" /usr/lib/parsoid/src/config.yaml
 #    sed -i "s/if (isset(\$params\['socket_options'\])) \$this->socket_options = \$params\['socket_options'\];/if (isset(\$params['socket_options'])) \$this->socket_options = \$params['socket_options'];\\n\$this->socket_options['ssl']['verify_peer'] = false;\\n\$this->socket_options['ssl']['verify_peer_name'] = false;/g" /usr/local/lib/php/Mail/smtp.php
 #fi
 
+# Special host
+echo "${FIX_DB_IP} ${MEDIAWIKI_DB_HOST}" >> /etc/hosts
+echo "172.17.0.2   ${LAB_HOST}" >> /etc/hosts
+
+echo "Done specials"
+
 # Start supervisord
 /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf

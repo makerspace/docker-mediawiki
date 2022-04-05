@@ -9,11 +9,13 @@ services:
     environment:
       MEDIAWIKI_HTTPS: ${USE_HTTPS}
       MEDIAWIKI_SERVER: ${WIKI_HOST}
-      MEDIAWIKI_SITENAME: Stockholm Makerspace Wiki
+      MEDIAWIKI_SITENAME: Stockholm Makerspace Wiki Lab
       MEDIAWIKI_LANGUAGE_CODE: sv
       MEDIAWIKI_SECRET_KEY: ${SECRET_KEY}
       MEDIAWIKI_DB_TYPE: mysql
       MEDIAWIKI_DB_HOST: ${DB_HOST}
+      FIX_DB_IP: 172.17.0.1
+      LAB_HOST: wlab.makerspace.se
       MEDIAWIKI_DB_PORT: 3306
       MEDIAWIKI_DB_NAME: ${DB_NAME}
       MEDIAWIKI_DB_USER: ${DB_USER}
@@ -50,12 +52,14 @@ services:
       RECAPTCHA_SECRET_KEY: ${RECAPTCHA_SECRET_KEY}
 
     volumes:
-      - ./data/images:/images
+      - /images:/images
       - ./data/makerspace_logo.png:/var/www/mediawiki/resources/assets/wiki.png:ro
       - ./data/ExtraLocalSettings.php:/var/www/mediawiki/ExtraLocalSettings.php:ro
 
     network_mode: "bridge"
 
 # uncomment these if run without proxy
-#    ports:
-#      - "80:80"
+    ports:
+      - "80:80"
+      - "443:443"
+
