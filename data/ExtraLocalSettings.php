@@ -41,9 +41,9 @@ wfLoadSkin( 'MinervaNeue' );
 
 wfLoadExtension('MobileFrontend');
 $wgMFAutodetectMobileView = true;
-$wgMFDefaultSkinClass = 'SkinMinerva'; // use Minerva skin
+# $wgMFDefaultSkinClass = 'SkinMinerva'; // use Minerva skin
 
-if (getenv('NETWORKAUTH_IPRANGE') != '') {
+if (false && getenv('NETWORKAUTH_IPRANGE') != '') {
 	require_once "$IP/extensions/NetworkAuth/NetworkAuth.php";
 	$wgNetworkAuthUsers[] = [
 	'iprange' => [ getenv('NETWORKAUTH_IPRANGE') ],
@@ -52,13 +52,23 @@ if (getenv('NETWORKAUTH_IPRANGE') != '') {
 	$wgNetworkAuthSpecialUsers[] = getenv('NETWORKAUTH_USER');
 }
 
-if (getenv('RECAPTCHA_SITE_KEY') != '') {
-	wfLoadExtensions([ 'ConfirmEdit', 'ConfirmEdit/ReCaptchaNoCaptcha' ]);
-	$wgCaptchaClass = 'ReCaptchaNoCaptcha';
-	$wgReCaptchaSiteKey = getenv('RECAPTCHA_SITE_KEY');
-	$wgReCaptchaSecretKey = getenv('RECAPTCHA_SECRET_KEY');
-}
+#if (false && getenv('RECAPTCHA_SITE_KEY') != '') {
+#	wfLoadExtensions([ 'ConfirmEdit', 'ConfirmEdit/ReCaptchaNoCaptcha' ]);
+#	$wgCaptchaClass = 'ReCaptchaNoCaptcha';
+#	$wgReCaptchaSiteKey = getenv('RECAPTCHA_SITE_KEY');
+#	$wgReCaptchaSecretKey = getenv('RECAPTCHA_SECRET_KEY');
+#}
+
+wfLoadExtensions([ 'ConfirmEdit', 'ConfirmEdit/QuestyCaptcha' ]);
+$wgCaptchaQuestions = [
+	'In which city is this makerspace based?' => 'Stockholm',
+	'Which country is this makerspace based in?' => 'Sweden',
+];
+
 
 $wgUsePrivateIPs = true;
 $wgSquidServersNoPurge = array('172.17.0.4');
+
+wfLoadExtension('CategoryTree');
+wfLoadExtension('StopForumSpam');
 

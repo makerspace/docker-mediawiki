@@ -3,8 +3,15 @@
 version: '3'
 services:
   wiki:
-    image: makerspace/makerspace-mediawiki:1.32.2
     container_name: wiki.makerspace.se
+    build:
+      context: ./docker
+      args:
+        MEDIAWIKI_VERSION_MAJOR: 1
+        MEDIAWIKI_VERSION_MINOR: 40
+        MEDIAWIKI_VERSION_BUGFIX: 0
+    links:
+      - database
     restart: always
     environment:
       MEDIAWIKI_HTTPS: ${USE_HTTPS}
@@ -50,11 +57,37 @@ services:
       RECAPTCHA_SECRET_KEY: ${RECAPTCHA_SECRET_KEY}
 
     volumes:
-      - ./data/images:/images
-      - ./data/makerspace_logo.png:/var/www/mediawiki/resources/assets/wiki.png:ro
-      - ./data/ExtraLocalSettings.php:/var/www/mediawiki/ExtraLocalSettings.php:ro
+      - ./data/images:/var/www/html/images
+      - ./data/makerspace_logo.png:/var/www/html/resources/assets/wiki.png:ro
+      - ./data/makerspace_logo.svg:/var/www/html/resources/assets/wiki.svg:ro
+      - ./data/ExtraLocalSettings.php:/var/www/html/ExtraLocalSettings.php:ro
+      - ./data/LocalSettings.php:/var/www/html/LocalSettings.php:ro
+      - ./data/php.ini:/usr/local/etc/php/conf.d/makerspace.ini
 
-    network_mode: "bridge"
+    expose:
+      - "80"
+    networks:
+      - makerspace_wiki
+      - internal
+  database:
+    image: mariadb
+    restart: always
+    environment:
+      # @see https://phabricator.wikimedia.org/source/mediawiki/browse/master/includes/DefaultSettings.php
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+    volumes:
+      - db:/var/lib/mysql
+      - ./data/mariadb.conf:/etc/mysql/mariadb.cnf
+    networks:
+      - internal
+volumes:
+  db:
+networks:
+  makerspace_wiki:
+  internal:
 
 # uncomment these if run without proxy
 #    ports:
