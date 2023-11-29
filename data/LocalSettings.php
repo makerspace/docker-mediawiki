@@ -28,6 +28,8 @@ if (getenv('MEDIAWIKI_META_NAMESPACE') != '') {
 ## (like /w/index.php/Page_title to /wiki/Page_title) please see:
 ## https://www.mediawiki.org/wiki/Manual:Short_URL
 $wgScriptPath = "";
+$wgArticlePath = "/$1";
+$wgUsePathInfo = true;
 
 if (getenv('MEDIAWIKI_SERVER') == '') {
     throw new Exception('Missing environment variable MEDIAWIKI_SERVER');

@@ -63,6 +63,7 @@ services:
       - ./data/ExtraLocalSettings.php:/var/www/html/ExtraLocalSettings.php:ro
       - ./data/LocalSettings.php:/var/www/html/LocalSettings.php:ro
       - ./data/php.ini:/usr/local/etc/php/conf.d/makerspace.ini
+      - ./data/.htaccess:/var/www/html/.htaccess:ro
 
     expose:
       - "80"
